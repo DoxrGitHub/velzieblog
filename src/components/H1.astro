@@ -1,0 +1,27 @@
+---
+const props = Astro.props;
+let insideslot = await Astro.slots.render("default");
+insideslot = insideslot.toLowerCase();
+insideslot = insideslot.replaceAll(" ", "-");
+---
+
+<style>
+  h1:before {
+    content: "#";
+    color: var(--accent);
+    font-weight: bold;
+    float: left;
+    margin-left: -1.5em;
+    position: absolute;
+  }
+  a {
+    color: rgb(var(--text-col)) !important;
+    text-decoration: none;
+  }
+</style>
+
+<h1 {...props}>
+  <a href={`#${insideslot}`}>
+    <slot />
+  </a>
+</h1>

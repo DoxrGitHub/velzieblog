@@ -4,10 +4,12 @@ import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
 import Layout from "./Layout.astro";
+import H1 from "../components/H1.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage,prev,next } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, prev, next } =
+  Astro.props;
 ---
 
 <Layout {title} {description}>
@@ -23,7 +25,7 @@ const { title, description, pubDate, updatedDate, heroImage,prev,next } = Astro.
       margin: auto;
       padding: 1em;
       /* background-color: rgb(var(--gray)); */
-      /* color: rgb(var(--gray-dark));
+    /* color: rgb(var(--gray-dark));
       padding: 0 3em; */
     /* } */
     .title {
@@ -31,8 +33,11 @@ const { title, description, pubDate, updatedDate, heroImage,prev,next } = Astro.
       padding: 1em 0;
       text-align: center;
       line-height: 1;
+      font-family: "tektite";
     }
     .title h1 {
+      font-size: 2.5em;
+      font-weight: 30;
       margin: 0 0 0.5em 0;
     }
     .date {
@@ -41,39 +46,64 @@ const { title, description, pubDate, updatedDate, heroImage,prev,next } = Astro.
     }
     .last-updated-on {
       font-style: italic;
-    } 
+    }
+    #nextbox a {
+      text-decoration: none;
+      color: rgb(var(--text-col));
+    }
+    #nextbox div {
+      color: var(--accent);
+
+      margin-top: 0.5em;
+
+      font-size: 1.7em;
+      font-family: "Source Code Pro";
+    }
   </style>
   <main>
-    <Header/>
-<hr/>
+    <Header />
+    <hr />
     <article>
-
-        <div class="title">
-          <div class="date">
-            <FormattedDate date={pubDate} />
-            {
-              updatedDate && (
-                <div class="last-updated-on">
-                  Last updated on <FormattedDate date={updatedDate} />
-                </div>
-              )
-            }
-          </div>
-          <h1>{title}</h1>
-          <div style="display:flex; justify-content: space-between;margin:0 1em;">
+      <div class="title">
+        <div class="date">
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <div class="last-updated-on">
+                Last updated on <FormattedDate date={updatedDate} />
+              </div>
+            )
+          }
+        </div>
+        <h1>{title}</h1>
+        <div style="display:flex; justify-content: space-between;margin:0 1em;">
           <a href={`/${prev?.slug}`}>&lt;- prev post</a>
           <a href={`/${next?.slug}`}>next post -&gt;</a>
-          </div>
-          <hr />
         </div>
-        <slot />
-        <div>
-          prev post {prev?.data.title}
-        </div>
-        <div>
-          next post {next?.data.title}
-        </div>
-        <Footer />
+        <hr />
+      </div>
+      <slot />
+      <hr />
+
+      <div id="nextbox">
+        {
+          prev && (
+            <a href={`/${prev.slug}`}>
+              <div>Last Post</div>
+              {prev.data.title}
+            </a>
+          )
+        }
+        {
+          next && (
+            <a href={`/${next.slug}`}>
+              <div>Next Post</div>
+              {next.data.title}
+            </a>
+          )
+        }
+      </div>
+      <Footer />
     </article>
   </main>
 </Layout>

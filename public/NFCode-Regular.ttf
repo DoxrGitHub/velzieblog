@@ -1,0 +1,24 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 96 8 180 760
+%%Pages: 0
+%%Title: l from NFCode-Regular
+%%Creator: FontForge
+%%Author: Unknown
+%%CreationDate: 12:09 5-11-2023
+%%EndComments
+%%BeginPreview: 1 1 4 1
+%00
+%%EndPreview
+%%EndProlog
+%%Page "l" 1
+gsave newpath
+	100 157 moveto
+	 96 8 lineto
+	 179 9 lineto
+	 180 140 lineto
+	 180 760 lineto
+	 100 760 lineto
+	 100 150 lineto
+	closepath
+fill grestore
+%%EOF
