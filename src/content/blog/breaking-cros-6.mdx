@@ -37,6 +37,8 @@ But what if we were able to bypass the cr50, and unlock the write protection any
 
 ## the pencil bypass
 
+> Note: This article lists pins 3 and 4 as the ones you need to bridge to disable write protect, but this is a mistake. You actually need to bridge pins 3 and 8 for this to happen. Read the [datasheet](https://www.winbond.com/resource-files/W25Q64JV%20RevK%2003102021%20Plus.pdf) for the Winbond flash chip for more information.
+
 If you open up the back of the chromebook, you can actually see the individual chips for the cr50 and firmware rom.<br/>
 While the cr50 is weird proprietary google stuff, the firmware is handled by an off-the-shelf SOIC-8 chip. You can even [flash it externally with a ch341a](https://wiki.mrchromebox.tech/Unbricking), more or less the same way you would flash an arduino. But that's not what we're interested in here.
 ![the schematic for the SOIC-8 chip where the firmware is stored](./breaking/romchip.png)
